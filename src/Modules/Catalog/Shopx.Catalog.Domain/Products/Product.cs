@@ -1,0 +1,35 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Shopx.Catalog.Domain.Products
+{
+    public sealed class Product
+    {
+        public ProductId Id { get; private set; } = ProductId.New();
+        public string Name { get; private set; }
+        public decimal Price { get; private set; }
+        public int Stock { get; private set; }
+
+        private readonly List<IDomainEvent> _events = new();
+        public IReadOnlyCollection<IDomainEvent> DomainEvents => _events.AsReadOnly();
+
+        private Product() { } // EF Core
+
+        public Product(string name, decimal price, int stock)
+        {
+            Name = name;
+            Price = price;
+            Stock = stock;
+        }
+
+        public void ChangePrice(decimal newPrice)
+        {
+            if (Price == newPrice) return;
+            Price = newPrice;
+            _events.Add(new ProductPriceChanged(Id, newPrice));
+        }
+    }
+}
