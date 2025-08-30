@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 namespace ShopX.BuildingBlocks.Domain.Products.Events
 {
-    public record ProductPriceChanged(ProductId ProductId, decimal NewPrice) : IDomainEvent;
+    public record ProductPriceChanged(ProductId ProductId, decimal NewPrice) : DomainEvent;
 
 }

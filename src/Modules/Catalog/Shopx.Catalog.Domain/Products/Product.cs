@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Shopx.Catalog.Domain.Products.Events;
+using ShopX.BuildingBlocks.Domain;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,10 +18,11 @@ namespace Shopx.Catalog.Domain.Products
         private readonly List<IDomainEvent> _events = new();
         public IReadOnlyCollection<IDomainEvent> DomainEvents => _events.AsReadOnly();
 
-        private Product() { } // EF Core
+        private Product() { } // EF
 
         public Product(string name, decimal price, int stock)
         {
+            Id = ProductId.New();
             Name = name;
             Price = price;
             Stock = stock;

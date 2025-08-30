@@ -1,9 +1,6 @@
 ﻿using Mapster;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Shopx.Catalog.Domain.Products;
+using ShopX.Catalog.Application.Products.DTOs;
 
 namespace ShopX.Catalog.Application.Products.Mappings
 {

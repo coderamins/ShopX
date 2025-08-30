@@ -1,19 +1,25 @@
-version: "3.9"
+version: '3.9'
+
 services:
   postgres:
     image: postgres:16
+    container_name: shopx_postgres
     environment:
       POSTGRES_USER: shopx
       POSTGRES_PASSWORD: shopx
-    ports: ["5432:5432"]
-    volumes: [ "pgdata:/var/lib/postgresql/data" ]
-  redis:
-    image: redis:7
-    ports: ["6379:6379"]
+      POSTGRES_DB: shopxdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - shopx_pgdata:/var/lib/postgresql/data
+
   seq:
     image: datalust/seq:2024
+    container_name: shopx_seq
     environment:
-      - ACCEPT_EULA=Y
-    ports: ["5341:80"]
+      ACCEPT_EULA: Y
+    ports:
+      - "5341:80"
+
 volumes:
-  pgdata:
+  shopx_pgdata:

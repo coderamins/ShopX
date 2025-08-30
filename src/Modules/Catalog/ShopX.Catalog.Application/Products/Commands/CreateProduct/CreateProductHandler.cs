@@ -1,4 +1,6 @@
 ﻿using MapsterMapper;
+using Shopx.Catalog.Domain.Products;
+using ShopX.Catalog.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
