@@ -1,5 +1,6 @@
 ﻿using MapsterMapper;
 using Microsoft.EntityFrameworkCore;
+using Shopx.Catalog.Domain.Products;
 using ShopX.Catalog.Application.Products.DTOs;
 using ShopX.Catalog.Infrastructure.Persistence;
 
@@ -18,7 +19,7 @@ namespace ShopX.Catalog.Application.Products.Queries.GetProductById
 
         public async Task<ProductDto?> Handle(GetProductByIdQuery query, CancellationToken ct)
         {
-            var product = await _db.Products.FirstOrDefaultAsync(p => p.Id.Value == query.Id, ct);
+            var product = await _db.Products.FirstOrDefaultAsync(p => p.Id == ProductId.FromGuid(query.Id), ct);
             return product == null ? null : _mapper.Map<ProductDto>(product);
         }
     }

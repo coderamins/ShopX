@@ -17,6 +17,24 @@ builder.Services.AddSingleton(MapsterConfig.CreateMapper());
 builder.Services.AddScoped<CreateProductHandler>();
 builder.Services.AddScoped<GetProductByIdHandler>();
 
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwagger();
+    app.UseSwagger();
+}
+
+
+using (var scope=app.Services.CreateScope())
+{
+    var db=scope.ServiceProvider.GetRequiredService<CatalogDbContext>();
+    db.Database.Migrate();  
+    await CatalogDbContextSeed.SeedAsync(db);
+}
+
 app.MapCatalogEndpoints();
 app.Run();
