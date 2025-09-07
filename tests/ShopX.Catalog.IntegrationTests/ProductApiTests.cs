@@ -25,7 +25,7 @@ namespace Shopx.Catalog.IntegrationTests
             var createRequest = new { Name = "Test Product", Price = 99.9m, Stock = 5 };
 
             //Act
-            var createResponse=await _client.PostAsJsonAsync("/products",createRequest);
+            var createResponse=await _client.PostAsJsonAsync("/api/v1/catalog/products", createRequest);
 
             createResponse.EnsureSuccessStatusCode();
 

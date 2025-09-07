@@ -65,3 +65,5 @@ app.MapHealthChecks("/health");
 app.Run();
 
 Console.WriteLine("Application is running...");
+
+public partial class Program { }
