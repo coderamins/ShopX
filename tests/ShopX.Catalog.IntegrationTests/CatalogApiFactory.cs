@@ -40,6 +40,7 @@ namespace Shopx.Catalog.IntegrationTests
                     options.UseNpgsql(GetConnectionString()));
             });
         }
+
         public string GetConnectionString()
                 => "Host=localhost;Port=5432;Database=shopxdb;Username=postgres;Password=Admin123";
 
