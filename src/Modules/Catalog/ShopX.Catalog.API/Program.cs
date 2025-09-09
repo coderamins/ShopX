@@ -9,6 +9,8 @@ using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
+Console.WriteLine("Postgres: " + builder.Configuration.GetConnectionString("Postgres"));
+
 // ----Serilog---
 Log.Logger=new LoggerConfiguration()
     .ReadFrom.Configuration(builder.Configuration)
