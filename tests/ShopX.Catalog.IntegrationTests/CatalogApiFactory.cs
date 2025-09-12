@@ -23,7 +23,7 @@ namespace Shopx.Catalog.IntegrationTests
             _dbContainer = new PostgreSqlBuilder()
               .WithDatabase("shopxdb")
               .WithUsername("postgres")
-              .WithPassword("Admin123")
+              .WithPassword("admin123")
               .WithImage("postgres:16-alpine")
               .Build();
         }
@@ -42,7 +42,7 @@ namespace Shopx.Catalog.IntegrationTests
         }
 
         public string GetConnectionString()
-                => "Host=localhost;Port=5432;Database=shopxdb;Username=postgres;Password=Admin123";
+                => "Host=localhost;Port=5433;Database=shopxdb;Username=postgres;Password=admin123";
 
         public async Task InitializeAsync()
         {

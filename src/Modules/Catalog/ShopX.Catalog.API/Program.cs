@@ -6,6 +6,7 @@ using Mapster;
 using ShopX.Catalog.Application.Products.Mappings;
 using ShopX.Catalog.Application.Products.Queries.GetProductById;
 using Serilog;
+using ShopX.Catalog.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +38,7 @@ builder.Services.AddScoped<GetProductByIdHandler>();
 builder.Services.AddHealthChecks()
     .AddNpgSql(builder.Configuration.GetConnectionString("Postgres")!);
 
+builder.Services.AddCatalogModule();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 

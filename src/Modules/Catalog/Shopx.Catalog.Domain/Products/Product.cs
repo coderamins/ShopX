@@ -28,6 +28,20 @@ namespace Shopx.Catalog.Domain.Products
             Stock = stock;
         }
 
+        public void Update(string name, decimal price, int stock)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+                throw new ArgumentException("Name cannot be empty", nameof(name));
+            if (price < 0)
+                throw new ArgumentException("Price cannot be negative", nameof(price));
+            if (stock < 0)
+                throw new ArgumentException("Stock cannot be negative", nameof(stock));
+
+            Name = name;
+            Price = price;
+            Stock = stock;
+        }
+
         public void ChangePrice(decimal newPrice)
         {
             if (Price == newPrice) return;

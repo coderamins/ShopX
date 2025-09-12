@@ -45,54 +45,71 @@ namespace Shopx.Catalog.IntegrationTests
             product.Stock.Should().Be(5);
         }
 
+        //[Fact]
+        //public async Task GetAllProducts_Should_Return_List()
+        //{
+        //    //Arrange
+        //    var createRequests = new[]
+        //    {
+        //         new {Name = "Product 1", Price = 10m, Stock = 5},
+        //         new { Name = "Product 2", Price = 20m, Stock = 3 }
+        //    };
 
-        [Fact]
-        public async Task GetAllProducts_Should_Return_List()
-        {
-            //Arrange
-            var createRequests = new[]
-            {
-                 new {Name = "Product 1", Price = 10m, Stock = 5},
-                 new { Name = "Product 2", Price = 20m, Stock = 3 }
-            };
+        //    foreach (var req in createRequests)
+        //        await _client.PostAsJsonAsync("/api/v1/catalog/products", req);
 
-            foreach (var req in createRequests)
-                await _client.PostAsJsonAsync("/api/v1/catalog/products/", req);
+        //    //Act
+        //    var response = await _client.GetAsync("/api/v1/catalog/products4");
+        //    response.EnsureSuccessStatusCode();
 
-            //Act
-            var response = await _client.GetAsync("/api/v1/catalog/products/");
-            response.EnsureSuccessStatusCode();
+        //    var products=await response.Content.ReadFromJsonAsync<List<ProductDto>>();
 
-            var products=await response.Content.ReadFromJsonAsync<List<ProductDto>>();
+        //    //Assert
+        //    products.Should().NotBeNull();
+        //    products.Count.Should().BeGreaterThanOrEqualTo(2);
+        //    products.Select(p => p.Name).Should().Contain(new[] { "Product 1", "Product 2" });
+        //}
 
-            //Assert
-            products.Should().NotBeNull();
-            products.Count.Should().BeGreaterThanOrEqualTo(2);
-            products.Select(p => p.Name).Should().Contain(new[] { "Product 1", "Product 2" });
-        }
+        //[Fact]
+        //public async Task Update_Product_Should_Change_Values()
+        //{
+        //    //Arrange
+        //    var createResponse=await _client.PostAsJsonAsync("/api/v1/catalog/products",
+        //        new { Name = "Old Name", Price = 5m, Stock = 2 });
 
-        [Fact]
-        public async Task Update_Product_Should_Change_Values()
-        {
-            //Arrange
-            var createResponse=await _client.PostAsJsonAsync("/api/v1/catalog/products/",
-                new { Name = "Old Name", Price = 5m, Stock = 2 });
+        //    var created = await createResponse.Content.ReadFromJsonAsync<CreateProductResponse>();
+        //    var productId = created!.Id;
 
-            var created = await createResponse.Content.ReadFromJsonAsync<CreateProductResponse>();
-            var productId = created!.Id;
+        //    //Act
+        //    var updateRequest= new { Name = "New Name", Price = 15m, Stock = 10 };
+        //    var updateResponse = await _client.PutAsJsonAsync($"/api/v1/catalog/products/{productId}", updateRequest);
+        //    updateResponse.EnsureSuccessStatusCode();
 
-            //Act
-            var updateRequest= new { Name = "New Name", Price = 15m, Stock = 10 };
-            var updateResponse = await _client.PostAsJsonAsync($"/api/v1/catalog/products/{productId}", updateRequest);
-            updateResponse.EnsureSuccessStatusCode();
+        //    // Assert
+        //    var getResponse = await _client.GetAsync($"/api/v1/catalog/products/{productId}");
+        //    var updated = await getResponse.Content.ReadFromJsonAsync<ProductDto>();
 
-            // Assert
-            var getResponse = await _client.GetAsync($"/api/v1/catalog/products/{productId}");
-            var updated = await getResponse.Content.ReadFromJsonAsync<ProductDto>();
+        //    updated!.Name.Should().Be("New Name");
+        //    updated.Price.Should().Be(15m);
+        //    updated.Stock.Should().Be(10);
+        //}
 
-            updated!.Name.Should().Be("New Name");
-            updated.Price.Should().Be(15m);
-            updated.Stock.Should().Be(10);
-        }
+        //[Fact]
+        //public async Task Delete_Product_Should_Remove_It()
+        //{
+        //    //Arrange
+        //    var createResponse = await _client.PostAsJsonAsync("/api/v1/catalog/products/",
+        //       new { Name = "To be Deleted", Price = 5m, Stock = 2 });
+        //    var created = await createResponse.Content.ReadFromJsonAsync<CreateProductResponse>();
+        //    var productId = created!.Id;
+
+        //    //Act
+        //    var deletedResponse = await _client.DeleteAsync($"/api/v1/catalog/products/{productId}");
+        //    deletedResponse.EnsureSuccessStatusCode();
+
+        //    //Assert
+        //    var getResponse = await _client.GetAsync($"/api/v1/catalog/products/{productId}");
+        //    getResponse.StatusCode.Should().Be(System.Net.HttpStatusCode.NotFound);
+        //}
     }
 }

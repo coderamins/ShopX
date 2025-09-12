@@ -5,11 +5,11 @@ services:
     image: postgres:16
     container_name: shopx_postgres
     environment:
-      POSTGRES_USER: shopx
-      POSTGRES_PASSWORD: shopx
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
       POSTGRES_DB: shopxdb
     ports:
-      - "5432:5432"
+      - "5433:5433"
     volumes:
       - shopx_pgdata:/var/lib/postgresql/data
 
