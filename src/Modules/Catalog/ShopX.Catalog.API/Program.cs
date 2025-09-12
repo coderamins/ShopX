@@ -17,9 +17,10 @@ Log.Logger=new LoggerConfiguration()
     .Enrich.FromLogContext()
     .CreateLogger();
 
+Log.Warning("Test logging!");
+
 
 builder.Host.UseSerilog();
-
 
 // --- EF Core ---
 builder.Services.AddDbContext<CatalogDbContext>(opt =>
@@ -64,3 +65,7 @@ app.MapCatalogEndpoints();
 app.MapHealthChecks("/health");
 
 app.Run();
+
+Console.WriteLine("Application is running...");
+
+public partial class Program { }

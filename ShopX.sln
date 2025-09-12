@@ -46,6 +46,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopX.Catalog.Infrastructur
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopX.Catalog.API", "src\Modules\Catalog\ShopX.Catalog.API\ShopX.Catalog.API.csproj", "{7A64BF2B-37DB-414D-814A-D653E590B596}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{0AB3BF05-4346-4AA6-1389-037BE0695223}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shopx.Catalog.IntegrationTests", "tests\Shopx.Catalog.IntegrationTests\Shopx.Catalog.IntegrationTests.csproj", "{4F021FFC-C3DE-48B2-9939-C73E1A04856E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -188,6 +192,18 @@ Global
 		{7A64BF2B-37DB-414D-814A-D653E590B596}.Release|x64.Build.0 = Release|Any CPU
 		{7A64BF2B-37DB-414D-814A-D653E590B596}.Release|x86.ActiveCfg = Release|Any CPU
 		{7A64BF2B-37DB-414D-814A-D653E590B596}.Release|x86.Build.0 = Release|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Debug|x64.Build.0 = Debug|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Debug|x86.Build.0 = Debug|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Release|x64.ActiveCfg = Release|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Release|x64.Build.0 = Release|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Release|x86.ActiveCfg = Release|Any CPU
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -211,5 +227,6 @@ Global
 		{50D7672D-405A-45A5-A03E-815E495DF632} = {488FB971-0B20-4A40-BB15-4FDD739234E1}
 		{A01DABCC-8AEA-4B7D-A9FA-03EEAC4D4F5C} = {488FB971-0B20-4A40-BB15-4FDD739234E1}
 		{7A64BF2B-37DB-414D-814A-D653E590B596} = {488FB971-0B20-4A40-BB15-4FDD739234E1}
+		{4F021FFC-C3DE-48B2-9939-C73E1A04856E} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
