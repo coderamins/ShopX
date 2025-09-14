@@ -1,4 +1,5 @@
 ﻿using MapsterMapper;
+using MediatR;
 using Shopx.Catalog.Domain.Products;
 using ShopX.Catalog.Infrastructure.Persistence;
 using System;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {
-    public sealed class CreateProductHandler
+    public sealed class CreateProductHandler:IRequestHandler<CreateProductCommand,Guid>
     {
         private readonly CatalogDbContext _db;
         private readonly IMapper _mapper;

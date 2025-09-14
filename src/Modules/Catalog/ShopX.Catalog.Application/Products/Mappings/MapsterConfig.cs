@@ -12,15 +12,20 @@ namespace ShopX.Catalog.Application.Products.Mappings
 {
     public static class MapsterConfig
     {
-        public static IMapper CreateMapper()
+        public static TypeAdapterConfig CreateMapper()
         {
             var config = new TypeAdapterConfig();
 
             // ثبت مپینگ‌ها
             config.NewConfig<Product, ProductDto>()
-                  .Map(dest => dest.Id, src => src.Id.Value);
+             .ConstructUsing(src => new ProductDto(
+                 src.Id.Value,
+                 src.Name,
+                 src.Price,
+                 src.Stock
+             ));
 
-            return new Mapper(config);
+            return config;
         }
     }
 }

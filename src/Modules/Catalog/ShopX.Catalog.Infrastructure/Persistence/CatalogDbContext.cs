@@ -21,6 +21,15 @@ namespace ShopX.Catalog.Infrastructure.Persistence
         {
             modelBuilder.HasDefaultSchema(Schema);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogDbContext).Assembly);
+
+            modelBuilder.Entity<Product>(b =>
+            {
+                b.HasKey(p => p.Id);
+                b.Property(p => p.Id)
+                    .HasConversion(
+                        id => id.Value,
+                        value => new ProductId(value));
+            });
         }
     }
 }

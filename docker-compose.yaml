@@ -6,7 +6,7 @@ services:
     container_name: shopx_postgres
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin123
+      POSTGRES_PASSWORD: Admin123
       POSTGRES_DB: shopxdb
     ports:
       - "5433:5433"

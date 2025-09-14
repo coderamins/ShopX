@@ -7,6 +7,7 @@ using ShopX.Catalog.Application.Products.Mappings;
 using ShopX.Catalog.Application.Products.Queries.GetProductById;
 using Serilog;
 using ShopX.Catalog.Infrastructure;
+using ShopX.Catalog.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,7 +29,8 @@ builder.Services.AddDbContext<CatalogDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Postgres")));
 
 // Mapster
-builder.Services.AddSingleton(MapsterConfig.CreateMapper());
+//builder.Services.AddSingleton(MapsterConfig.CreateMapper());
+builder.Services.AddMapping();
 
 // Handlers
 builder.Services.AddScoped<CreateProductHandler>();

@@ -10,7 +10,7 @@ namespace Shopx.Catalog.Domain.Products
     {
         public Guid Value { get; private set; }
 
-        private ProductId(Guid value) => Value = value;
+        public ProductId(Guid value) => Value = value;
 
         public static ProductId New() => new(Guid.NewGuid());
 

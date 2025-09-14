@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Azure.Core;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using Shopx.Catalog.Domain.Products;
 using ShopX.Catalog.Infrastructure.Persistence;
 
 namespace ShopX.Catalog.Application.Products.Commands.UpdateProduct
@@ -21,7 +22,7 @@ namespace ShopX.Catalog.Application.Products.Commands.UpdateProduct
 
         public async Task<bool> Handle(UpdateProductCommand request,CancellationToken ct)
         {
-            var product = await _db.Products.FirstOrDefaultAsync(p => p.Id.Value == request.Id, ct);
+            var product = await _db.Products.FirstOrDefaultAsync(p => p.Id == new ProductId(request.Id), ct);
             if (product is null) return false;
 
             product.Update(request.Name, request.Price, request.Stock);
