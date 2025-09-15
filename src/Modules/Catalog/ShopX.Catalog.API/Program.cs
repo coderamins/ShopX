@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ShopX.Catalog.API.Endpoints;
 using ShopX.Catalog.Application.Products.Commands.CreateProduct;
 using ShopX.Catalog.Infrastructure.Persistence;
@@ -8,6 +8,9 @@ using ShopX.Catalog.Application.Products.Queries.GetProductById;
 using Serilog;
 using ShopX.Catalog.Infrastructure;
 using ShopX.Catalog.Application;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,10 +22,43 @@ Log.Logger=new LoggerConfiguration()
     .Enrich.FromLogContext()
     .CreateLogger();
 
-Log.Warning("Test logging!");
+//---Observability---
+var serviceName = "ShopX.Catalog";
+var serviceVersion = "1.0.0";
 
+builder.Services.AddOpenTelemetry()
+    .ConfigureResource(r =>
+        r.AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+    .WithTracing(tracing =>
+    {
+        tracing
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddSqlClientInstrumentation(opt =>
+            {
+                opt.SetDbStatementForText = true;
+                opt.RecordException = true;
+            })
+            .AddOtlpExporter(opt =>
+            {
+                opt.Endpoint = new Uri("http://otel-collector:4317"); // به collector می‌فرسته
+            });
+    })
+    .WithMetrics(metrics =>
+    {
+        metrics
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddRuntimeInstrumentation()
+            //.AddProcessInstrumentation()
+            .AddOtlpExporter(opt =>
+            {
+                opt.Endpoint = new Uri("http://otel-collector:4317");
+            });
+    });
 
-builder.Host.UseSerilog();
+builder.Host.UseSerilog((ctx, lc) =>
+    lc.ReadFrom.Configuration(ctx.Configuration));
 
 // --- EF Core ---
 builder.Services.AddDbContext<CatalogDbContext>(opt =>
@@ -67,6 +103,8 @@ app.MapCatalogEndpoints();
 
 // --- Health endpoint ---
 app.MapHealthChecks("/health");
+
+Log.Information("OpenTelemetry initialized for ShopX.Catalog");
 
 app.Run();
 

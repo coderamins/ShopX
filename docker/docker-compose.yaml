@@ -1,36 +1,18 @@
-version: "3.9"
-
 services:
   # -----------------
   # Database
   # -----------------
   postgres:
     image: postgres:16
+    container_name: shopx_postgres
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: Admin123
       POSTGRES_DB: shopxdb
     ports:
-      - "5432:5432"
+      - "5433:5433"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-  # -----------------
-  # Catalog API
-  # -----------------
-  shopx.catalog.api:
-    build:
-      context: ./src/Modules/Catalog/ShopX.Catalog.API
-      dockerfile: Dockerfile
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=shopxdb;Username=postgres;Password=Admin123
-      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
-    ports:
-      - "5000:5000"
-    depends_on:
-      - postgres
-      - otel-collector
+      - shopx_pgdata:/var/lib/postgresql/data
 
   # -----------------
   # Observability
@@ -41,15 +23,15 @@ services:
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
-      - "4317:4317"
-      - "4318:4318"
-      - "8889:8889"
+      - "4317:4317"   # gRPC OTLP
+      - "4318:4318"   # HTTP OTLP
+      - "8889:8889"   # Prometheus metrics
 
   jaeger:
     image: jaegertracing/all-in-one:1.53
     ports:
-      - "16686:16686"
-      - "9411:9411"
+      - "16686:16686" # Jaeger UI
+      - "9411:9411"   # Zipkin endpoint
 
   prometheus:
     image: prom/prometheus
@@ -64,14 +46,6 @@ services:
       - "3000:3000"
     environment:
       - GF_SECURITY_ADMIN_USER=admin
-      - GF_SECURITY_ADMIN_PASSWORD=admin
-
-  seq:
-    image: datalust/seq:latest
-    environment:
-      - ACCEPT_EULA=Y
-    ports:
-      - "5341:80"
-
+      - GF_SECURITY_ADMIN_PAS_
 volumes:
-  postgres_data:
+  shopx_pgdata:
