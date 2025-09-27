@@ -28,7 +28,7 @@ var serviceVersion = "1.0.0";
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(r =>
-        r.AddService(serviceName: serviceName, serviceVersion: serviceVersion))
+        r.AddService("ShopX.Catalog", "1.0.0"))
     .WithTracing(tracing =>
     {
         tracing
@@ -39,18 +39,6 @@ builder.Services.AddOpenTelemetry()
                 opt.SetDbStatementForText = true;
                 opt.RecordException = true;
             })
-            .AddOtlpExporter(opt =>
-            {
-                opt.Endpoint = new Uri("http://otel-collector:4317"); // به collector می‌فرسته
-            });
-    })
-    .WithMetrics(metrics =>
-    {
-        metrics
-            .AddAspNetCoreInstrumentation()
-            .AddHttpClientInstrumentation()
-            .AddRuntimeInstrumentation()
-            //.AddProcessInstrumentation()
             .AddOtlpExporter(opt =>
             {
                 opt.Endpoint = new Uri("http://otel-collector:4317");

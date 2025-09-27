@@ -7,30 +7,30 @@ services:
   postgres:
     image: postgres:16
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: Admin123
-      POSTGRES_DB: shopxdb
+      POSTGRES_USER: shopx
+      POSTGRES_PASSWORD: shopx
+      POSTGRES_DB: shopx_catalog
     ports:
-      - "5433:5432"
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
   # -----------------
   # Catalog API
   # -----------------
-  # shopx.catalog.api:
-  #   build:
-  #       context: .
-  #       dockerfile: ./src/Modules/Catalog/ShopX.Catalog.API/Dockerfile
-  #   environment:
-  #     - ASPNETCORE_ENVIRONMENT=Development
-  #     - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=shopxdb;Username=postgres;Password=Admin123
-  #     - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
-  #   ports:
-  #     - "5000:5000"
-  #   depends_on:
-  #     - postgres
-  #     - otel-collector
+  shopx.catalog.api:
+    build:
+      context: .
+      dockerfile: ./src/Modules/Catalog/ShopX.Catalog.API/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=shopx_catalog;Username=shopx;Password=shopx
+      - OTEL_EXPORTER_OTLP_ENDPOINT=http://otel-collector:4317
+    ports:
+      - "5126:8080"
+    depends_on:
+      - postgres
+      - otel-collector
 
   # -----------------
   # Observability
@@ -70,8 +70,12 @@ services:
     image: datalust/seq:latest
     environment:
       - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORD=Admin@123
     ports:
-      - "5432:80"
+      - "5341:80"
+    volumes:
+      - seq_data:/data
 
 volumes:
   postgres_data:
+  seq_data:

@@ -1,4 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+﻿using ShopX.BuildingBlocks.Infrastructure.Persistence;
+using ShopX.Catalog.Application.Products.Mappings;
+using Serilog;
+using OpenTelemetry.Trace;
+using Microsoft.EntityFrameworkCore;
+using Hangfire;
+using Hangfire.PostgreSql;
+
+var builder = WebApplication.CreateBuilder(args);
 
 // Serilog
 builder.Host.UseSerilog((ctx, lc) => lc
@@ -6,12 +14,12 @@ builder.Host.UseSerilog((ctx, lc) => lc
 
 // OpenTelemetry (حداقل وب + EF + HTTP)
 builder.Services.AddOpenTelemetry()
-    .WithTracing(b => b.AddAspNetCoreInstrumentation().AddHttpClientInstrumentation())
-    .WithMetrics(b => b.AddAspNetCoreInstrumentation());
+    .WithTracing(b => b.AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation());
 
 // Swagger + Versioning
 builder.Services.AddSwaggerGen();
-builder.Services.AddApiVersioning(opt => { opt.DefaultApiVersion = new(1, 0); opt.AssumeDefaultVersionWhenUnspecified = true; });
+//builder.Services.AddApiVersioning(opt => { opt.DefaultApiVersion = new(1, 0); opt.AssumeDefaultVersionWhenUnspecified = true; });
 
 // DbContexts
 builder.Services.AddDbContext<CatalogDbContext>(opt =>
@@ -21,7 +29,7 @@ builder.Services.AddDbContext<CatalogDbContext>(opt =>
 builder.Services.AddSingleton(MapsterConfig.CreateMapper());
 
 // Redis (اختیاری)
-builder.Services.AddStackExchangeRedisCache(o => o.Configuration = builder.Configuration["Redis:ConnectionString"]);
+//builder.Services.AddStackExchangeRedisCache(o => o.Configuration = builder.Configuration["Redis:ConnectionString"]);
 
 // Hangfire
 builder.Services.AddHangfire(x => x.UsePostgreSqlStorage(builder.Configuration.GetConnectionString("Postgres")));
@@ -40,7 +48,7 @@ app.UseSwaggerUI();
 app.MapHealthChecks("/health");
 
 // Mount کردن APIهای ماژول‌ها (روش ساده)
-app.MapCatalogEndpoints();   // متد اکستنشن در ShopX.Catalog.API
-app.MapIdentityEndpoints();  // ...
+//app.MapCatalogEndpoints();   // متد اکستنشن در ShopX.Catalog.API
+//app.MapIdentityEndpoints();  // ...
 
 app.Run();
