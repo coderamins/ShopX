@@ -8,7 +8,7 @@ COPY . .
 RUN dotnet restore ShopX.sln
 
 # publish
-WORKDIR /src/src/Modules/Catalog/ShopX.Catalog.API
+WORKDIR /src/Modules/Catalog/ShopX.Catalog.API
 RUN dotnet publish -c Release -o /app/publish
 
 # runtime
