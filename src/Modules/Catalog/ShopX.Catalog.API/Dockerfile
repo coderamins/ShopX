@@ -1,13 +1,18 @@
 ﻿FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 
-# کپی solution و کل محتویات پروژه (بدون اضافه کردن src دوم)
-COPY . .
+# کپی فقط solution و پروژه‌های لازم
+COPY ShopX.sln ./
 
-# restore
-RUN dotnet restore ShopX.sln
+COPY src/Modules/Catalog/ShopX.Catalog.API/ ./Modules/Catalog/ShopX.Catalog.API/
+COPY src/Modules/Catalog/ShopX.Catalog.Application/ ./Modules/Catalog/ShopX.Catalog.Application/
+COPY src/Modules/Catalog/ShopX.Catalog.Infrastructure/ ./Modules/Catalog/ShopX.Catalog.Infrastructure/
+COPY src/BuildingBlocks/ShopX.BuildingBlocks.Application/ ./BuildingBlocks/ShopX.BuildingBlocks.Application/
 
-# publish
+# restore فقط روی پروژه‌های مورد نیاز API
+RUN dotnet restore Modules/Catalog/ShopX.Catalog.API/ShopX.Catalog.API.csproj
+
+# publish پروژه API
 WORKDIR /src/Modules/Catalog/ShopX.Catalog.API
 RUN dotnet publish -c Release -o /app/publish
 
