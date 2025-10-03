@@ -28,22 +28,31 @@ var serviceVersion = "1.0.0";
 
 builder.Services.AddOpenTelemetry()
     .ConfigureResource(r =>
-        r.AddService("ShopX.Catalog", "1.0.0"))
-    .WithTracing(tracing =>
+        r.AddService("shopx.catalog.api")) // 👈 اسم سرویس
+    .WithTracing(tracerProviderBuilder =>
     {
-        tracing
+        tracerProviderBuilder
             .AddAspNetCoreInstrumentation()
             .AddHttpClientInstrumentation()
-            .AddSqlClientInstrumentation(opt =>
+            //.AddEntityFrameworkCoreInstrumentation()
+            .AddOtlpExporter(options =>
             {
-                opt.SetDbStatementForText = true;
-                opt.RecordException = true;
-            })
-            .AddOtlpExporter(opt =>
+                // این همون آدرسیه که به otel-collector وصل میشه
+                options.Endpoint = new Uri("http://otel-collector:4317");
+            });
+    })
+    .WithMetrics(metricsProviderBuilder =>
+    {
+        metricsProviderBuilder
+            .AddRuntimeInstrumentation()
+            .AddAspNetCoreInstrumentation()
+            .AddHttpClientInstrumentation()
+            .AddOtlpExporter(options =>
             {
-                opt.Endpoint = new Uri("http://otel-collector:4317");
+                options.Endpoint = new Uri("http://otel-collector:4317");
             });
     });
+
 
 builder.Host.UseSerilog((ctx, lc) =>
     lc.ReadFrom.Configuration(ctx.Configuration));

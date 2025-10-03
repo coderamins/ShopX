@@ -1,4 +1,4 @@
-version: "3.9"
+﻿version: "3.9"
 
 services:
   # -----------------
@@ -46,15 +46,17 @@ services:
     volumes:
       - ./otel-collector-config.yaml:/etc/otel-collector-config.yaml
     ports:
-      - "4317:4317"
-      - "4318:4318"
-      - "8889:8889"
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+      - "8889:8889"   # Prometheus metrics
+    depends_on:
+      - jaeger
 
   jaeger:
     image: jaegertracing/all-in-one:1.53
     ports:
-      - "16686:16686"
-      - "9411:9411"
+      - "16686:16686" # UI
+    # دیگه لازم نیست 4317 و 4318 رو publish کنیم
 
   prometheus:
     image: prom/prometheus
