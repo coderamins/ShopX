@@ -20,6 +20,9 @@ namespace ShopX.Catalog.Application.Products.Queries.GetProductById
 
         public async Task<ProductDto?> Handle(GetProductByIdQuery query, CancellationToken ct)
         {
+            // شبیه‌سازی تاخیر مصنوعی
+            await Task.Delay(2000, ct); // ۲ ثانیه تاخیر
+
             var product = await _db.Products.FirstOrDefaultAsync(p => p.Id == ProductId.FromGuid(query.Id), ct);
             return product == null ? null : _mapper.Map<ProductDto>(product);
         }

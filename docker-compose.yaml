@@ -55,8 +55,7 @@ services:
   jaeger:
     image: jaegertracing/all-in-one:1.53
     ports:
-      - "16686:16686" # UI
-    # دیگه لازم نیست 4317 و 4318 رو publish کنیم
+      - "16686:16686" # UI دیگه لازم نیست 4317 و 4318 رو publish کنیم
 
   prometheus:
     image: prom/prometheus
