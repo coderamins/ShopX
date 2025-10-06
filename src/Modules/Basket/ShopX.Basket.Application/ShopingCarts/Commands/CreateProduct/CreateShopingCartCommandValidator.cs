@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {
-    public sealed class CreateProductValidator : AbstractValidator<CreateProductCommand>
+    public sealed class CreateShopingCartCommandValidator : AbstractValidator<CreateShopingCartCommand>
     {
-        public CreateProductValidator()
+        public CreateShopingCartCommandValidator()
         {
             RuleFor(x => x.Name).NotEmpty().MaximumLength(200);
             RuleFor(x => x.Price).GreaterThan(0);
