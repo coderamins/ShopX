@@ -6,8 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopX.Catalog.Application.Products.Queries.GetProductById
+namespace ShopX.Catalog.Application.Products.Queries.GetShopingCarts
 {
-    public record GetShopingCartQuery(Guid Id):IRequest<ProductDto>;
+    public record GetShoppingCartQuery(string BuyerId) : IRequest<ShoppingCartDto>;
 
 }

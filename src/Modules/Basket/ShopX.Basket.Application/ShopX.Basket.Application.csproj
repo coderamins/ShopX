@@ -8,7 +8,13 @@
 
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="12.0.0" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\ShopX.BuildingBlocks.Application\ShopX.BuildingBlocks.Application.csproj" />
+    <ProjectReference Include="..\ShopX.Basket.Infrastructure\ShopX.Basket.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

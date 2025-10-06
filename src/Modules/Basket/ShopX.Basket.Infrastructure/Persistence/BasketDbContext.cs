@@ -12,8 +12,8 @@ namespace ShopX.Basket.Infrastructure.Persistence
     {
         public BasketDbContext(DbContextOptions<BasketDbContext> options):base(options) { }
 
-        public DbSet<ShopingCart> ShopingCarts => Set<ShopingCart>();
-        public DbSet<ShopingCartItem> ShopingCartItems => Set<ShopingCartItem>();
+        public DbSet<ShoppingCart> ShoppingCarts => Set<ShoppingCart>();
+        public DbSet<ShoppingCartItem> ShoppingCartItems => Set<ShoppingCartItem>();
 
     }
 }

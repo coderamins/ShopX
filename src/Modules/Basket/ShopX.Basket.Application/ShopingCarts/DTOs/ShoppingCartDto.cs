@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShopX.Catalog.Application.Products.DTOs
 {
-    public record ShopingCartDto(Guid Id, string Name, decimal Price, int Stock);
+    public record ShoppingCartDto(Guid Id, string BuyerId, List<BasketItemDto> Items);
+    public record BasketItemDto(Guid ProductId, int Quantity, decimal UnitPrice);
+
 
 }

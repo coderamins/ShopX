@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Routing;
+using ShopX.Catalog.Application.Products.Commands.CreateProduct;
+using ShopX.Catalog.Application.Products.Queries.GetShopingCarts;
 
 namespace ShopX.Basket.API.Endpoints
 {
@@ -17,7 +19,7 @@ namespace ShopX.Basket.API.Endpoints
                 return cart is null ? Results.NotFound() : Results.Ok(cart);
             });
 
-            group.MapPost("/", async (CreateShoppingCartCommand cmd, ISender sender) =>
+            group.MapPost("/", async (CreateShopingCartCommand cmd, ISender sender) =>
             {
                 var id = await sender.Send(cmd);
                 return Results.Created($"/api/v1/basket/{id}", new { id });
