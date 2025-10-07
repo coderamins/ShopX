@@ -14,6 +14,5 @@ namespace ShopX.Basket.Infrastructure.Persistence
 
         public DbSet<ShoppingCart> ShoppingCarts => Set<ShoppingCart>();
         public DbSet<ShoppingCartItem> ShoppingCartItems => Set<ShoppingCartItem>();
-
     }
 }
