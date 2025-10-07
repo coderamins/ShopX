@@ -1,14 +1,8 @@
 ﻿using Mapster;
-using MapsterMapper;
-using Shopx.Catalog.Domain.Products;
-using ShopX.Catalog.Application.Products.DTOs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ShopX.Basket.Application.ShopingCarts.DTOs;
+using ShopX.Basket.Domain.Entities;
 
-namespace ShopX.Catalog.Application.Products.Mappings
+namespace ShopX.Basket.Application.ShopingCarts.Mappings
 {
     public static class MapsterConfig
     {
@@ -17,13 +11,12 @@ namespace ShopX.Catalog.Application.Products.Mappings
             var config = new TypeAdapterConfig();
 
             // ثبت مپینگ‌ها
-            config.NewConfig<Product, ProductDto>()
-             .ConstructUsing(src => new ProductDto(
-                 src.Id.Value,
-                 src.Name,
-                 src.Price,
-                 src.Stock
-             ));
+            //config.NewConfig<ShoppingCart, ShoppingCartDto>()
+            // .ConstructUsing(src => new ShoppingCartDto(
+            //     src.Id,
+            //     src.BuyerId ,
+            //     src.Items
+            // ));
 
             return config;
         }

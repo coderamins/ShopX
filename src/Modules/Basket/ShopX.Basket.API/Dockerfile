@@ -10,6 +10,10 @@ COPY src/Modules/Basket/ShopX.Basket.Application/ ./Modules/Basket/ShopX.Basket.
 COPY src/Modules/Basket/ShopX.Basket.Infrastructure/ ./Modules/Basket/ShopX.Basket.Infrastructure/
 COPY src/Modules/Basket/ShopX.Basket.Domain/ ./Modules/Basket/ShopX.Basket.Domain/
 
+COPY src/BuildingBlocks/ShopX.BuildingBlocks.Application/ ./BuildingBlocks/ShopX.BuildingBlocks.Application/
+COPY src/BuildingBlocks/ShopX.BuildingBlocks.Domain/ ./BuildingBlocks/ShopX.BuildingBlocks.Domain/
+COPY src/BuildingBlocks/ShopX.BuildingBlocks.Infrastructure/ ./BuildingBlocks/ShopX.BuildingBlocks.Infrastructure/
+
 # restore فقط روی API (که وابستگی‌هاش resolve بشن)
 RUN dotnet restore Modules/Basket/ShopX.Basket.API/ShopX.Basket.API.csproj
 

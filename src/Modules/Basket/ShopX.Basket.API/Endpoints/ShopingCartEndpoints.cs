@@ -1,8 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Routing;
+using ShopX.Basket.Application.ShoppingCarts.Queries.GetShopingCarts;
 using ShopX.Catalog.Application.Products.Commands.CreateProduct;
-using ShopX.Catalog.Application.Products.Queries.GetShopingCarts;
 
 namespace ShopX.Basket.API.Endpoints
 {
@@ -27,7 +28,9 @@ namespace ShopX.Basket.API.Endpoints
 
             group.MapPost("/{buyerId}/items", async (string buyerId, AddItemToCartCommand cmd, ISender sender) =>
             {
-                await sender.Send(cmd with { BuyerId = buyerId });
+                // مطمئن شو که BuyerId داخل cmd مقداردهی می‌شود
+                var commandWithBuyerId = cmd with { BuyerId = buyerId };
+                await sender.Send(commandWithBuyerId);
                 return Results.NoContent();
             });
 
@@ -36,6 +39,7 @@ namespace ShopX.Basket.API.Endpoints
                 await sender.Send(new RemoveItemFromCartCommand(buyerId, productId));
                 return Results.NoContent();
             });
+
 
             return app;
 

@@ -1,11 +1,10 @@
 ﻿using MapsterMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ShopX.Basket.Application.ShopingCarts.DTOs;
 using ShopX.Basket.Infrastructure.Persistence;
-using ShopX.BuildingBlocks.Application.Products.DTOs;
-using ShopX.Catalog.Application.Products.DTOs;
 
-namespace ShopX.Catalog.Application.Products.Queries.GetShopingCarts
+namespace ShopX.Basket.Application.ShoppingCarts.Queries.GetShopingCarts
 {
     public class GetShoppingCartQueryHandler : IRequestHandler<GetShoppingCartQuery, ShoppingCartDto?>
     {

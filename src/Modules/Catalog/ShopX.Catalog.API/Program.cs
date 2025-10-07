@@ -3,7 +3,6 @@ using ShopX.Catalog.API.Endpoints;
 using ShopX.Catalog.Application.Products.Commands.CreateProduct;
 using ShopX.Catalog.Infrastructure.Persistence;
 using Mapster;
-using ShopX.Catalog.Application.Products.Mappings;
 using ShopX.Catalog.Application.Products.Queries.GetProductById;
 using Serilog;
 using ShopX.Catalog.Infrastructure;

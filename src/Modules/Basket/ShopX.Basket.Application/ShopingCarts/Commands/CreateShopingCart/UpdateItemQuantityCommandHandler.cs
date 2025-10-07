@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {
-    public record UpdateItemQuantityCommand(string BuyerId, Guid ProductId, int Quantity) : IRequest;
+    public record UpdateItemQuantityCommand(string BuyerId, Guid ProductId, int Quantity) : IRequest<Unit>;
 
-    public class UpdateItemQuantityCommandHandler : IRequestHandler<UpdateItemQuantityCommand>
+    public class UpdateItemQuantityCommandHandler : IRequestHandler<UpdateItemQuantityCommand,Unit>
     {
         private readonly BasketDbContext _db;
 
