@@ -1,13 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Internal;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using ShopX.Basket.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
 
 namespace ShopX.Basket.Infrastructure
 {
@@ -15,8 +8,8 @@ namespace ShopX.Basket.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<BasketDbContext>(options =>
-                options.UseNpgsql(configuration.GetConnectionString("BasketConnection")));
+            services.AddMediatR(cfg =>
+                           cfg.RegisterServicesFromAssembly(Assembly.Load("ShopX.Basket.Application")));
 
             return services;
 

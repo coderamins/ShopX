@@ -14,27 +14,26 @@ namespace ShopX.Basket.API.Endpoints
             var group = app.MapGroup("/api/v1/basket")
             .WithTags("ShopingCart");
 
-            group.MapGet("/{buyerId}", async (string buyerId, ISender sender) =>
+            group.MapGet("/{buyerId}", async (string buyerId, [FromServices] ISender sender) =>
             {
                 var cart = await sender.Send(new GetShoppingCartQuery(buyerId));
                 return cart is null ? Results.NotFound() : Results.Ok(cart);
             });
 
-            group.MapPost("/", async (CreateShopingCartCommand cmd, ISender sender) =>
+            group.MapPost("/", async ([FromBody]CreateShopingCartCommand cmd,[FromServices] ISender sender) =>
             {
                 var id = await sender.Send(cmd);
                 return Results.Created($"/api/v1/basket/{id}", new { id });
             });
 
-            group.MapPost("/{buyerId}/items", async (string buyerId, AddItemToCartCommand cmd, ISender sender) =>
+            group.MapPost("/{buyerId}/items", async (string buyerId,[FromBody] AddItemToCartCommand cmd,[FromServices] ISender sender) =>
             {
-                // مطمئن شو که BuyerId داخل cmd مقداردهی می‌شود
                 var commandWithBuyerId = cmd with { BuyerId = buyerId };
                 await sender.Send(commandWithBuyerId);
                 return Results.NoContent();
             });
 
-            group.MapDelete("/{buyerId}/items/{productId:guid}", async (string buyerId, Guid productId, ISender sender) =>
+            group.MapDelete("/{buyerId}/items/{productId:guid}", async (string buyerId, Guid productId,[FromServices] ISender sender) =>
             {
                 await sender.Send(new RemoveItemFromCartCommand(buyerId, productId));
                 return Results.NoContent();
