@@ -13,22 +13,24 @@ namespace ShopX.Basket.Domain.Entities
         public decimal UnitPrice { get; private set; }
         public int Quantity { get; private set; }
 
-        private ShoppingCartItem() { }
+        private ShoppingCartItem() { } // EF Core
 
         public ShoppingCartItem(Guid productId, decimal price, int quantity)
         {
-            ProductId=productId;
-            UnitPrice=price;
-            Quantity=quantity;
+            if (quantity <= 0)
+                throw new ArgumentException("تعداد باید بیشتر از صفر باشد.");
+
+            ProductId = productId;
+            UnitPrice = price;
+            Quantity = quantity;
         }
 
-        public void AddQuantity(int quantity) => Quantity+=quantity;
+        public void AddQuantity(int quantity) => Quantity += quantity;
 
         public void UpdateQuantity(int quantity)
         {
             if (quantity <= 0)
                 throw new ArgumentException("تعداد باید بیشتر از صفر باشد.");
-
             Quantity = quantity;
         }
     }

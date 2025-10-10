@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ShopX.Basket.Domain.Entities;
 using ShopX.Basket.Infrastructure.Persistence;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
@@ -15,13 +16,26 @@ namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
         public async Task<Unit> Handle(AddItemToCartCommand request, CancellationToken ct)
         {
             var cart = await _db.ShoppingCarts
-                .Include(c => c.Items)
-                .FirstOrDefaultAsync(c => c.BuyerId == request.BuyerId, ct);
+            .Include(c => c.Items).AsTracking()
+            .FirstOrDefaultAsync(c => c.BuyerId == request.BuyerId, ct);
 
             if (cart is null)
-                throw new InvalidOperationException("سبد خرید خالی می باشد !");
+            {
+                cart = new ShoppingCart(request.BuyerId);
+                _db.ShoppingCarts.Add(cart);
+            }
 
-            cart.AddItem(request.ProductId, request.UnitPrice,request.Quantity);
+            var existing = cart.Items.FirstOrDefault(i => i.ProductId == request.ProductId);
+            if (existing is null)
+            {
+                var newItem = new ShoppingCartItem(request.ProductId, request.UnitPrice, request.Quantity);
+                cart.Items.Add(newItem);
+                _db.ShoppingCartItems.Add(newItem); // 👈 این خط مشکل Concurrency رو حل می‌کنه
+            }
+            else
+            {
+                existing.AddQuantity(request.Quantity);
+            }
             await _db.SaveChangesAsync(ct);
 
             return Unit.Value;
