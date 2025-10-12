@@ -15,6 +15,4 @@ namespace ShopX.Basket.Infrastructure.Persistence
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(BasketDbContext).Assembly);
         }
     }
-
-
 }

@@ -82,4 +82,8 @@
     <ProjectReference Include="..\ShopX.Catalog.Infrastructure\ShopX.Catalog.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>
