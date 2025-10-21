@@ -68,6 +68,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopX.Identity.Application"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopX.Identity.Infrastructure", "src\Modules\Identity\ShopX.Identity.Infrastructure\ShopX.Identity.Infrastructure.csproj", "{04265FEA-F852-4A8E-9A11-29332C8EA38E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopX.Identity.IntegrationTests", "tests\ShopX.Identity.IntegrationTests\ShopX.Identity.IntegrationTests.csproj", "{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -306,6 +308,18 @@ Global
 		{04265FEA-F852-4A8E-9A11-29332C8EA38E}.Release|x64.Build.0 = Release|Any CPU
 		{04265FEA-F852-4A8E-9A11-29332C8EA38E}.Release|x86.ActiveCfg = Release|Any CPU
 		{04265FEA-F852-4A8E-9A11-29332C8EA38E}.Release|x86.Build.0 = Release|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Debug|x64.Build.0 = Debug|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Debug|x86.Build.0 = Debug|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Release|x64.ActiveCfg = Release|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Release|x64.Build.0 = Release|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Release|x86.ActiveCfg = Release|Any CPU
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -338,5 +352,6 @@ Global
 		{B0F88B6C-0A51-47AA-991D-2997AD978284} = {8FE4DDD1-C245-47BE-B71D-CD04819AD90E}
 		{7877D7BB-2B18-4181-944F-5A8BC651BC28} = {8FE4DDD1-C245-47BE-B71D-CD04819AD90E}
 		{04265FEA-F852-4A8E-9A11-29332C8EA38E} = {8FE4DDD1-C245-47BE-B71D-CD04819AD90E}
+		{EF9532B7-82B3-4E3E-A431-01C49A00FB6E} = {0AB3BF05-4346-4AA6-1389-037BE0695223}
 	EndGlobalSection
 EndGlobal
