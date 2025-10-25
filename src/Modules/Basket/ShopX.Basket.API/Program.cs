@@ -5,6 +5,8 @@ using ShopX.Basket.Infrastructure;
 using ShopX.Basket.Infrastructure.Persistence;
 using ShopX.Catalog.Application.Products.Commands.CreateProduct;
 using Npgsql;
+using ShopX.Basket.API.Services;
+using ShopX.Basket.Application.Common.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,7 @@ builder.Services.AddScoped<AddItemToCartCommandHandler>();
 builder.Services.AddScoped<CreateShoppingCartCommandHandler>();
 builder.Services.AddScoped<RemoveItemFromCartCommandHandler>();
 builder.Services.AddScoped<UpdateItemQuantityCommandHandler>();
+
 
 builder.Services.AddInfrastructure(builder.Configuration);
 

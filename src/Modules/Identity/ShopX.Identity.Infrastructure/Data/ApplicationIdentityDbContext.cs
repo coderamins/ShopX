@@ -4,9 +4,9 @@ using ShopX.Identity.Domain.Entities;
 
 namespace ShopX.Identity.Infrastructure.Data
 {
-    public class IdentityDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationIdentityDbContext : IdentityDbContext<ApplicationUser>
     {
-        public IdentityDbContext(DbContextOptions<IdentityDbContext> options)
+        public ApplicationIdentityDbContext(DbContextOptions<ApplicationIdentityDbContext> options)
             : base(options)
         {
         }

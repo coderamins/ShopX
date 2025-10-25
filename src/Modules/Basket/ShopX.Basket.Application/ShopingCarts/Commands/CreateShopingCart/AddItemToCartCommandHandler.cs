@@ -10,6 +10,7 @@ namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
     public class AddItemToCartCommandHandler : IRequestHandler<AddItemToCartCommand,Unit>
     {
         private readonly BasketDbContext _db;
+        private readonly CatalogService _catalog;
 
         public AddItemToCartCommandHandler(BasketDbContext db) => _db = db;
 

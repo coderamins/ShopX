@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopX.Basket.Domain\ShopX.Basket.Domain.csproj" />
+    <ProjectReference Include="..\ShopX.Basket.Application\ShopX.Basket.Application.csproj" />
   </ItemGroup>
 
 </Project>
