@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopX.Basket.Application\ShopX.Basket.Application.csproj" />
+    <ProjectReference Include="..\ShopX.Basket.Infrastructure\ShopX.Basket.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
