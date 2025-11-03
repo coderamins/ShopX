@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ShopX.Identity.Application\ShopX.Identity.Application.csproj" />
-    <ProjectReference Include="..\ShopX.Identity.Domain\ShopX.Identity.Domain.csproj" />
     <ProjectReference Include="..\ShopX.Identity.Infrastructure\ShopX.Identity.Infrastructure.csproj" />
   </ItemGroup>
 

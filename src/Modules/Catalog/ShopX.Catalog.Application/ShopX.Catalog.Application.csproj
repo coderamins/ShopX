@@ -14,8 +14,4 @@
     <PackageReference Include="Microsoft.EntityframeWorkCore" Version="9.0.9" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ShopX.Catalog.Infrastructure\ShopX.Catalog.Infrastructure.csproj" />
-  </ItemGroup>
-
 </Project>

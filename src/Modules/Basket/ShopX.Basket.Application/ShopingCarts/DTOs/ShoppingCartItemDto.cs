@@ -1,3 +1,3 @@
 ﻿namespace ShopX.Basket.Application.DTOs;
 
-public record ShoppingCartItemDto(Guid Id, Guid ProductId, string ProductName, int Quantity, decimal UnitPrice);
+public record ShoppingCartItemDto(Guid ProductId, /*string ProductName, */int Quantity, decimal UnitPrice);

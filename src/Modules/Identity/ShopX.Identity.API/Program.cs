@@ -14,7 +14,8 @@ builder.Services.AddDbContext<IdentityDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("IdentityDb")));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<IdentityDbContext>();
+    .AddEntityFrameworkStores<IdentityDbContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<ITokenService, TokenService>();
 

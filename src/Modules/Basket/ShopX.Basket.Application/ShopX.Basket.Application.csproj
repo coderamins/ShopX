@@ -11,11 +11,11 @@
     <PackageReference Include="Mapster" Version="7.4.0" />
     <PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
     <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.10" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\BuildingBlocks\ShopX.BuildingBlocks.Application\ShopX.BuildingBlocks.Application.csproj" />
-    <ProjectReference Include="..\ShopX.Basket.Infrastructure\ShopX.Basket.Infrastructure.csproj" />
+    <ProjectReference Include="..\ShopX.Basket.Domain\ShopX.Basket.Domain.csproj" />
   </ItemGroup>
 
 </Project>

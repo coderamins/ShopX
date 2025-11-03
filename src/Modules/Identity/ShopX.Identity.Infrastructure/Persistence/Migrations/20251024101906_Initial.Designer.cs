@@ -11,9 +11,9 @@ using ShopX.Identity.Infrastructure.Data;
 
 namespace ShopX.Identity.Infrastructure.Persistence.Migrations
 {
-    [DbContext(typeof(IdentityDbContext))]
-    [Migration("20251018074153_140407261108")]
-    partial class _140407261108
+    [DbContext(typeof(ApplicationIdentityDbContext))]
+    [Migration("20251024101906_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

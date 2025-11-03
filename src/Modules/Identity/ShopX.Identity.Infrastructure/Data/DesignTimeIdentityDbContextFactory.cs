@@ -6,9 +6,9 @@ using System.IO;
 namespace ShopX.Identity.Infrastructure.Data
 {
     public class DesignTimeIdentityDbContextFactory
-          : IDesignTimeDbContextFactory<IdentityDbContext>
+          : IDesignTimeDbContextFactory<ApplicationIdentityDbContext>
     {
-        public IdentityDbContext CreateDbContext(string[] args)
+        public ApplicationIdentityDbContext CreateDbContext(string[] args)
         {
             // مسیر فایل appsettings.json در پروژه‌ی API
             var basePath = Path.Combine(Directory.GetCurrentDirectory(), "../ShopX.Identity.API");
@@ -20,10 +20,10 @@ namespace ShopX.Identity.Infrastructure.Data
 
             var connectionString = config.GetConnectionString("IdentityDb");
 
-            var optionsBuilder = new DbContextOptionsBuilder<IdentityDbContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<ApplicationIdentityDbContext>();
             optionsBuilder.UseNpgsql(connectionString);
 
-            return new IdentityDbContext(optionsBuilder.Options);
+            return new ApplicationIdentityDbContext(optionsBuilder.Options);
         }
     }
 }

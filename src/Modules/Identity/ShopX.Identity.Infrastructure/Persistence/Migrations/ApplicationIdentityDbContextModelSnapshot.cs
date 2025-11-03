@@ -10,8 +10,8 @@ using ShopX.Identity.Infrastructure.Data;
 
 namespace ShopX.Identity.Infrastructure.Persistence.Migrations
 {
-    [DbContext(typeof(IdentityDbContext))]
-    partial class IdentityDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationIdentityDbContext))]
+    partial class ApplicationIdentityDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
