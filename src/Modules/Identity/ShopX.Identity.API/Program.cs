@@ -4,17 +4,18 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using ShopX.Identity.Application.Interfaces;
 using ShopX.Identity.Domain.Entities;
+using ShopX.Identity.Infrastructure.Data;
 using ShopX.Identity.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
-builder.Services.AddDbContext<IdentityDbContext>(opt =>
+builder.Services.AddDbContext<ApplicationIdentityDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("IdentityDb")));
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>()
-    .AddEntityFrameworkStores<IdentityDbContext>()
+    .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
     .AddDefaultTokenProviders();
 
 builder.Services.AddScoped<ITokenService, TokenService>();

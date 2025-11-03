@@ -11,6 +11,11 @@ namespace ShopX.Basket.Infrastructure
             services.AddMediatR(cfg =>
                            cfg.RegisterServicesFromAssembly(Assembly.Load("ShopX.Basket.Application")));
 
+            services.AddHttpClient<ICatalogService, CatalogService>(client =>
+            {
+                client.BaseAddress=new Uri(builder.Configuration["Services:BaseUrl"]!);
+            });
+
             return services;
 
         }
