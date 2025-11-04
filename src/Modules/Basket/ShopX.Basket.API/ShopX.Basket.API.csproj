@@ -25,4 +25,8 @@
     <ProjectReference Include="..\ShopX.Basket.Infrastructure\ShopX.Basket.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\" />
+  </ItemGroup>
+
 </Project>

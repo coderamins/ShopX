@@ -1,11 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ShopX.Basket.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ShopX.Basket.Application.Common.ShopX.Basket.Application.Common.Interfaces;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {
@@ -13,9 +8,9 @@ namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 
     public class RemoveItemFromCartCommandHandler : IRequestHandler<RemoveItemFromCartCommand,Unit>
     {
-        private readonly BasketDbContext _db;
+        private readonly IBasketDbContext _db;
 
-        public RemoveItemFromCartCommandHandler(BasketDbContext db) => _db = db;
+        public RemoveItemFromCartCommandHandler(IBasketDbContext db) => _db = db;
 
         public async Task<Unit> Handle(RemoveItemFromCartCommand request, CancellationToken ct)
         {

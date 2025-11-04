@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using Shopx.Catalog.Domain.Products;
-using ShopX.Catalog.Infrastructure.Persistence;
 
 namespace ShopX.Catalog.Application.Products.Commands.DeleteProduct
 {
     public class DeleteProductHandler:IRequestHandler<DeleteProductCommand,bool>
     {
-        private readonly CatalogDbContext _db;
+        private readonly ICatalogDbContext _db;
 
-        public DeleteProductHandler(CatalogDbContext db)
+        public DeleteProductHandler(ICatalogDbContext db)
         {
             _db = db;
         }

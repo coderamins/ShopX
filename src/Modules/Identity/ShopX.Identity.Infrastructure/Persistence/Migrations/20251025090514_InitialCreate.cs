@@ -7,11 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace ShopX.Identity.Infrastructure.Persistence.Migrations
 {
     /// <inheritdoc />
-<<<<<<<< HEAD:src/Modules/Identity/ShopX.Identity.Infrastructure/Persistence/Migrations/20251024101906_Initial.cs
-    public partial class Initial : Migration
-========
     public partial class InitialCreate : Migration
->>>>>>>> f12d593a659a3e8dcee9a0e33c3b6607372764ed:src/Modules/Identity/ShopX.Identity.Infrastructure/Persistence/Migrations/20251025090514_InitialCreate.cs
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

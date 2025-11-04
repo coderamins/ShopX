@@ -9,6 +9,6 @@ namespace ShopX.Basket.Application.Common.Interfaces
 {
     public interface ICatalogService
     {
-        Task<ProductDto?> GetProductByIdAsync(Guid productId);
+        Task<ProductDto?> GetProductByIdAsync(Guid productId,CancellationToken cancellationToken);
     }
 }

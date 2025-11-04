@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
-using ShopX.Basket.Application.Common;
+﻿using MediatR;
+using Microsoft.EntityFrameworkCore;
+using ShopX.Basket.Application.Common.Interfaces;
+using ShopX.Basket.Application.Common.ShopX.Basket.Application.Common.Interfaces;
 
 namespace ShopX.Basket.Application.ShopingCarts.Commands.AddItemToCart
 {

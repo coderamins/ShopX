@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ShopX.Basket.Application.Common
+namespace ShopX.Catalog.Application.Common.Interfaces
 {
-    internal class ICatalogService
+    public interface ICatalogDbContext
     {
     }
 }

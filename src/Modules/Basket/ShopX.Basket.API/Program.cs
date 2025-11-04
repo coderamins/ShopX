@@ -4,9 +4,7 @@ using ShopX.Basket.Application;
 using ShopX.Basket.Infrastructure;
 using ShopX.Basket.Infrastructure.Persistence;
 using ShopX.Catalog.Application.Products.Commands.CreateProduct;
-using Npgsql;
-using ShopX.Basket.API.Services;
-using ShopX.Basket.Application.Common.Interfaces;
+using ShopX.Basket.Application.ShopingCarts.Commands.AddItemToCart;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -36,7 +34,6 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

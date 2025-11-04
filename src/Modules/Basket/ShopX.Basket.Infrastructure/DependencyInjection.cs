@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ShopX.Basket.Infrastructure.Services;
 using System.Reflection;
 
 namespace ShopX.Basket.Infrastructure

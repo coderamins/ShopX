@@ -1,5 +1,6 @@
-﻿
-using ShopX.Basket.
+﻿using ShopX.Basket.Application.Common.Interfaces;
+using ShopX.Basket.Application.DTOs;
+using System.Net.Http.Json;
 
 namespace ShopX.Basket.Infrastructure.Services
 {
@@ -16,6 +17,5 @@ namespace ShopX.Basket.Infrastructure.Services
         {
             return await _httpClient.GetFromJsonAsync<ProductDto>($"/api/v1/catalog/products/{productId}");
         }
-
     }
 }

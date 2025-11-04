@@ -1,11 +1,6 @@
 ﻿using MediatR;
+using ShopX.Basket.Application.Common.ShopX.Basket.Application.Common.Interfaces;
 using ShopX.Basket.Domain.Entities;
-using ShopX.Basket.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {
@@ -13,9 +8,9 @@ namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 
     public class CreateShoppingCartCommandHandler : IRequestHandler<CreateShopingCartCommand, Guid>
     {
-        private readonly BasketDbContext _db;
+        private readonly IBasketDbContext _db;
 
-        public CreateShoppingCartCommandHandler(BasketDbContext db) => _db = db;
+        public CreateShoppingCartCommandHandler(IBasketDbContext db) => _db = db;
 
         public async Task<Guid> Handle(CreateShopingCartCommand request, CancellationToken ct)
         {
