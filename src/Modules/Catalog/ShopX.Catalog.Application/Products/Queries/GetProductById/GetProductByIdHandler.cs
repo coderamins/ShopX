@@ -2,17 +2,17 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Shopx.Catalog.Domain.Products;
+using ShopX.Catalog.Application.Common.Interfaces;
 using ShopX.Catalog.Application.Products.DTOs;
-using ShopX.Catalog.Infrastructure.Persistence;
 
 namespace ShopX.Catalog.Application.Products.Queries.GetProductById
 {
     public sealed class GetProductByIdHandler:IRequestHandler<GetProductByIdQuery,ProductDto>
     {
-        private readonly CatalogDbContext _db;
+        private readonly ICatalogDbContext _db;
         private readonly IMapper _mapper;
 
-        public GetProductByIdHandler(CatalogDbContext db, IMapper mapper)
+        public GetProductByIdHandler(ICatalogDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;

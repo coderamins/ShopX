@@ -14,4 +14,8 @@
     <PackageReference Include="Microsoft.EntityframeWorkCore" Version="9.0.9" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Shopx.Catalog.Domain\Shopx.Catalog.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

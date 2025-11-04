@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ShopX.Basket.Application.Common.ShopX.Basket.Application.Common.Interfaces;
+using ShopX.Basket.Application.Common.Interfaces;
 using ShopX.Basket.Application.DTOs;
 using ShopX.Basket.Application.ShopingCarts.DTOs;
 

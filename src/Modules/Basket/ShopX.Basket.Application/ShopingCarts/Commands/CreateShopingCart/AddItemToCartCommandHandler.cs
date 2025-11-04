@@ -1,7 +1,4 @@
 ﻿using MediatR;
-using Microsoft.EntityFrameworkCore;
-using ShopX.Basket.Domain.Entities;
-using ShopX.Basket.Infrastructure.Persistence;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {

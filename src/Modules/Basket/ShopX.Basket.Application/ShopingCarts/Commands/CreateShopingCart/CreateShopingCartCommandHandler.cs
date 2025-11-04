@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using ShopX.Basket.Application.Common.ShopX.Basket.Application.Common.Interfaces;
+using ShopX.Basket.Application.Common.Interfaces;
 using ShopX.Basket.Domain.Entities;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct

@@ -1,21 +1,16 @@
 ﻿using MapsterMapper;
 using MediatR;
 using Shopx.Catalog.Domain.Products;
-using ShopX.Catalog.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ShopX.Catalog.Application.Common.Interfaces;
 
 namespace ShopX.Catalog.Application.Products.Commands.CreateProduct
 {
     public sealed class CreateProductHandler:IRequestHandler<CreateProductCommand,Guid>
     {
-        private readonly CatalogDbContext _db;
+        private readonly ICatalogDbContext _db;
         private readonly IMapper _mapper;
 
-        public CreateProductHandler(CatalogDbContext db, IMapper mapper)
+        public CreateProductHandler(ICatalogDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper = mapper;

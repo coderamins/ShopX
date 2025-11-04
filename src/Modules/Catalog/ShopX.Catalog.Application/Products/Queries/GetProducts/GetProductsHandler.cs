@@ -2,17 +2,17 @@
 using MapsterMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ShopX.Catalog.Application.Common.Interfaces;
 using ShopX.Catalog.Application.Products.DTOs;
-using ShopX.Catalog.Infrastructure.Persistence;
 
 namespace ShopX.Catalog.Application.Products.Queries.GetProducts
 {
     public class GetProductsHandler : IRequestHandler<GetProductsQuery, IEnumerable<ProductDto>>
     {
-        private readonly CatalogDbContext _db;
+        private readonly ICatalogDbContext _db;
         private readonly IMapper _mapper;
 
-        public GetProductsHandler(CatalogDbContext db, IMapper mapper)
+        public GetProductsHandler(ICatalogDbContext db, IMapper mapper)
         {
             _db = db;
             _mapper=mapper;

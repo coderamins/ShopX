@@ -16,5 +16,3 @@ namespace ShopX.Basket.Application.Common.Interfaces
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
-
-}

@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Azure.Core;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Shopx.Catalog.Domain.Products;
-using ShopX.Catalog.Infrastructure.Persistence;
+using ShopX.Catalog.Application.Common.Interfaces;
 
 namespace ShopX.Catalog.Application.Products.Commands.UpdateProduct
 {
     public class UpdateProductHandler:IRequestHandler<UpdateProductCommand,bool>
     {
-        private readonly CatalogDbContext _db;
+        private readonly ICatalogDbContext _db;
 
-        public UpdateProductHandler(CatalogDbContext db)
+        public UpdateProductHandler(ICatalogDbContext db)
         {
             _db = db;
         }

@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ShopX.Catalog.Application.Common.Interfaces;
 
 namespace ShopX.Catalog.Application.Products.Commands.DeleteProduct
 {
