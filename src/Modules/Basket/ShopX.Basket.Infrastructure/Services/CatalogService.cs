@@ -13,7 +13,7 @@ namespace ShopX.Basket.Infrastructure.Services
             _httpClient=httpClient;
         }
 
-        public async Task<ProductDto?> GetProductByIdAsync(Guid productId)
+        public async Task<ProductDto?> GetProductByIdAsync(Guid productId, CancellationToken cancellationToken)
         {
             return await _httpClient.GetFromJsonAsync<ProductDto>($"/api/v1/catalog/products/{productId}");
         }

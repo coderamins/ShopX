@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ShopX.Basket.Application.Common.Interfaces;
 using ShopX.Basket.Infrastructure.Services;
 using System.Reflection;
 
@@ -14,7 +15,7 @@ namespace ShopX.Basket.Infrastructure
 
             services.AddHttpClient<ICatalogService, CatalogService>(client =>
             {
-                client.BaseAddress=new Uri(builder.Configuration["Services:BaseUrl"]!);
+                client.BaseAddress=new Uri(configuration["Services:BaseUrl"]!);
             });
 
             return services;

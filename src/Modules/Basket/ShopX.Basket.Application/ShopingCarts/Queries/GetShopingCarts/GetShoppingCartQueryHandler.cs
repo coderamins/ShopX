@@ -21,17 +21,15 @@ namespace ShopX.Basket.Application.ShoppingCarts.Queries.GetShopingCarts
             if (cart is null)
                 return null;
 
-            return new ShoppingCartDto
-            {
-                BuyerId = cart.BuyerId,
-                Items = cart.Items.Select(i => new ShoppingCartItemDto
-                {                    
-                    ProductId = i.ProductId,
-                    Quantity = i.Quantity,
-                    UnitPrice = i.UnitPrice,                    
-                    //ProductName=i.pro
-                }).ToList()
-            };
+            return new ShoppingCartDto(
+               cart.BuyerId,
+               cart.Items.Select(i => new BasketItemDto
+               (
+                   i.ProductId,
+                   i.Quantity,
+                   i.UnitPrice
+               )).ToList()
+           );
         }
     }
 }
